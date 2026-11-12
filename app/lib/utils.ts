@@ -22,6 +22,11 @@ export const formatDateToLocal = (
 };
 
 export const generateYAxis = (revenue: Revenue[]) => {
+  // Add a guard clause to handle undefined, null, or empty revenue arrays
+  if (!revenue || revenue.length === 0) {
+    return { yAxisLabels: [], topLabel: 0 };
+  }
+
   // Calculate what labels we need to display on the y-axis
   // based on highest record and in 1000s
   const yAxisLabels = [];
